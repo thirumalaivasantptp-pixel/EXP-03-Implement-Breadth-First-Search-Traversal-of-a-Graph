@@ -1,14 +1,14 @@
 # EXP-03-Implement-Breadth-First-Search-Traversal-of-a-Graph
 Breadth First Search Traversal of a Graph
+<h3>Name: THIRUMALAIVASAN J </h3>
+<h3>Register Number:212224060287 </h3>
 
-
-AIM: 
+AIM:
+<p>To Implement Breadth First Search Traversal of a Graph using Python 3.</p>
 Theory: 
-To Implement Breadth First Search Traversal of a Graph using Python 3. 
-
-Breadth-First Traversal (or Search) for a graph is like the Breadth-First Traversal of a tree. 
+<p>Breadth-First Traversal (or Search) for a graph is like the Breadth-First Traversal of a tree. 
 The only catch here is that, unlike trees, graphs may contain cycles so that we may come to the same 
-node again. To avoid processing a node more than once, we divide the vertices into two categories: 
+node again. To avoid processing a node more than once, we divide the vertices into two categories:
 1. Visited and 
 2. Not visited. 
 A Boolean visited array is used to mark the visited vertices. For simplicity, it is assumed that all 
@@ -18,9 +18,11 @@ Starting from the root, all the nodes at a particular level are visited first, a
 nodes are traversed until all the nodes are visited. 
 To do this, a queue is used. All the adjacent unvisited nodes of the current level are pushed into the 
 queue, and the current-level nodes are marked visited and popped from the queue. 
+  
 Illustration: 
-Let us understand the working of the algorithm with the help of the following example. 
-Step1: Initially queue and visited arrays are empty.
+<p>Let us understand the working of the algorithm with the help of the following example. 
+Step1: Initially queue and visited arrays are empty.<p>
+  
 <img width="681" height="286" alt="image" src="https://github.com/user-attachments/assets/5872b545-43d7-4b7a-8d53-fc3b06287d2d" />
 
 Queue and visited arrays are empty initially. 
@@ -86,39 +88,81 @@ C D
 D E  
 D G 
 G F 
+
 ''' 
+```
 def bfs(graph,start,visited,path): 
-queue = deque() 
-path.append(start) 
-queue.append(start) 
-visited[start] = True 
-while len(queue) != 0: 
-tmpnode = queue.popleft() 
-for neighbour in graph[tmpnode]: 
-if visited[neighbour] == False: 
-path.append(neighbour) 
-queue.append(neighbour) 
-visited[neighbour] = True 
-return path 
+      queue = deque() 
+      path.append(start) 
+      queue.append(start) 
+      visited[start] = True 
+      while len(queue) != 0: 
+          tmpnode = queue.popleft() 
+          for neighbour in graph[tmpnode]: 
+              if visited[neighbour] == False: 
+                  path.append(neighbour) 
+                  queue.append(neighbour) 
+                  visited[neighbour] = True 
+      return path 
 graph = defaultdict(list) 
 v,e = map(int,input().split()) 
 for i in range(e): 
-u,v = map(str,input().split()) 
-graph[u].append(v) 
-graph[v].append(u) 
+     u,v = map(str,input().split()) 
+     graph[u].append(v) 
+     graph[v].append(u)
+ 
 start = '0' 
 #start=’A’ 
 path = [] 
 visited = defaultdict(bool) 
 traversedpath = bfs(graph,start,visited,path) 
-print(traversedpath) 
-Sample Input : 
-5 6 
-0 1 
-0 2 
-1 2 
-1 3 
-2 4 
-3 4 
-Sample Output: 
-['0', '1', '2', '3', '4'] 
+print(traversedpath)
+
+---
+```
+<hr>
+<h3>Sample Input</h3>
+<hr>
+7 9 <BR>
+A B <BR>
+A C <BR>
+A F <BR>
+C E <BR>
+C F <BR>
+C D <BR>
+D E <BR>
+D G <BR>
+G F <BR>
+<hr>
+<h3>Sample Output</h3>
+<hr>
+['A', 'B', 'C', 'F', 'E', 'D', 'G']
+
+<hr>
+
+<hr>
+<h3>Sample Input</h3>
+<hr>
+5 6 <BR>
+0 1 <BR>
+0 2 <BR>
+1 2 <BR>
+1 3 <BR>
+2 4 <BR>
+3 4 <BR>
+<hr>
+<h3>Sample Output</h3>
+<hr>
+['0', '1', '2', '3', '4']
+<hr>
+
+
+<h3>Output:</h3>
+
+
+![Screenshot 2025-03-26 155856](https://github.com/user-attachments/assets/eba8c4e8-1b1d-40b7-b393-ed8422d7694f)
+
+
+
+<h3>Result:</h3>
+<p>Thus,a Graph was constructed and implementation of Breadth First Search for the same graph was done successfully.</p 
